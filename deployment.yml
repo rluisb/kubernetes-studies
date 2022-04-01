@@ -4,6 +4,7 @@ metadata:
   name: hello-nginx
 #spec for deployment
 spec:
+  replicas: 3
   selector:
     matchLabels:
       app: hello-nginx
