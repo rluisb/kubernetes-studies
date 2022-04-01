@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-nginx
+#spec for deployment
+spec:
+  selector:
+    matchLabels:
+      app: hello-nginx
+  template:
+    metadata:
+      labels:
+        app: hello-nginx
+    #spec for pod
+    spec:
+      containers:
+        - name: hello-nginx
+          image: nginx:1.17-alpine
+          ports:
+            - containerPort: 80
+
+
