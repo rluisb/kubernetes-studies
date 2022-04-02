@@ -19,5 +19,22 @@ spec:
           image: nginx:1.17-alpine
           ports:
             - containerPort: 80
+          #define the volume mount
+          volumeMounts:
+            #define the path where the volume will be mounted inside container
+            - mountPath: /etc/nginx/conf.d
+              #tells if is readOnly
+              readOnly: true
+              #tells the mount which is the volume to mount
+              name: nginx-conf
+
+      #creates a volume
+      volumes:
+        - name: nginx-conf
+          configMap:
+            name: nginx-conf
+            items:
+              - key: nginx.conf
+                path: nginx.conf
 
 
