@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php-apache-hpa
+#spec for deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: php-apache-hpa
+  template:
+    metadata:
+      labels:
+        app: php-apache-hpa
+    #spec for pod
+    spec:
+      containers:
+        - name: php-apache-hpa
+          image: rluisb/php-apache-hpa
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: "200m"
+
+
